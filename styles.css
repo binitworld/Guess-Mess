@@ -15,14 +15,14 @@ body {
     height: 90%; /* Set the height to 90% of the viewport height */
     padding: 20px;
     background-color: black;
-    color: white;
-    border-radius: 10px;
+    color: rgb(227, 126, 126);
+    border-radius: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     font-size: 36px;
-    color: white;
+    color: rgb(247, 139, 7);
     margin-bottom: 20px;
 }
 

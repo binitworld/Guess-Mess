@@ -9,7 +9,7 @@ using namespace std;
 
 // Function to choose a random word from a list
 string chooseRandomWord() {
-    vector<string> words = {"apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"};
+    vector<string> words = { "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"};
     int randomIndex = rand() % words.size();
     return words[randomIndex];
 }
