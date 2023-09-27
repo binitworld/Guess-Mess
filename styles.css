@@ -1,23 +1,28 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #ffffcc; /* Set the outer background color to light yellow */
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Make the container at least as tall as the viewport */
 }
 
 .container {
     text-align: center;
-    margin: 0 auto;
-    max-width: 600px;
+    width: 80%; /* Set the width to 80% of the viewport width */
+    height: 90%; /* Set the height to 90% of the viewport height */
     padding: 20px;
-    background-color: #fff;
+    background-color: black;
+    color: white;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     font-size: 36px;
-    color: #333;
+    color: white;
     margin-bottom: 20px;
 }
 
@@ -28,28 +33,30 @@ h1 {
 #word-display {
     font-size: 24px;
     margin: 20px 0;
-    color: #333;
+    color: white;
 }
 
 #guesses {
     font-size: 18px;
     margin: 10px 0;
-    color: #555;
+    color: white;
 }
 
 #guess-input {
     padding: 10px;
     font-size: 18px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     border-radius: 5px;
     margin-right: 10px;
+    color: black;
+    background-color: white;
 }
 
 #guess-button {
     padding: 10px 20px;
     font-size: 18px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;

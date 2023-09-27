@@ -5,6 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Style for the celebratory pop-up */
+        #celebration-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -22,6 +37,14 @@
         <button id="guess-button">Guess</button>
         <p id="message"></p>
     </div>
+
+    <!-- Celebratory pop-up on winning -->
+    <div id="celebration-popup">
+        <h2>Congratulations!</h2>
+        <p>You guessed the word!</p>
+        <audio id="winning-audio" src="winning.mp3" autoplay></audio>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

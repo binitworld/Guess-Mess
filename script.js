@@ -29,9 +29,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkWin() {
         if (displayWord() === wordToGuess) {
-            document.getElementById("message").textContent = "Congratulations! You guessed the word: " + wordToGuess;
+            // Display the celebratory pop-up
+            const celebrationPopup = document.getElementById("celebration-popup");
+            celebrationPopup.style.display = "block";
+
+            // Disable input and button
             document.getElementById("guess-input").disabled = true;
             document.getElementById("guess-button").disabled = true;
+
+            // Play background music
+            const winningAudio = document.getElementById("winning-audio");
+            winningAudio.play();
         } else if (attempts >= maxAttempts) {
             document.getElementById("message").textContent = "You ran out of attempts. The word was: " + wordToGuess;
             document.getElementById("guess-input").disabled = true;
@@ -72,5 +80,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     resetGame(); // Start a new game when the page loads
 
-    document.getElementById("new-game-button").addEventListener("click", resetGame);
+    document.getElementById("new-game-button").addEventListener("click", function () {
+        // Hide the celebratory pop-up
+        document.getElementById("celebration-popup").style.display = "none";
+
+        // Enable input and button
+        document.getElementById("guess-input").disabled = false;
+        document.getElementById("guess-button").disabled = false;
+
+        // Reset the game
+        resetGame();
+    });
 });
