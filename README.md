@@ -35,7 +35,7 @@ To run this Hangman Game, follow these steps:
    git clone https://github.com/binitworld/Hangman-game-Guess-Mess-.git
 
 
-##Contributing
+## Contributing
 
 ### Tip: Complete this process in GitHub (in your browser)
 
