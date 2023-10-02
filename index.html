@@ -6,44 +6,72 @@
     <title>Guess-Mess</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Style for the celebratory pop-up */
         #celebration-popup {
             display: none;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgb(239, 239, 17);
+            background-color: rgb(239, 190, 17);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+            color: rgb(0, 0, 0);
+            margin-top: auto;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 78vh;
+            position: relative;
+        }
+
+        #chances {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Hangman Game</h1>
-        <div id="hangman-image">
-            <!-- Display hangman image here -->
+        <div id="chances">
+            <span id="heart">&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;</span>
         </div>
-        <div id="word-display">
-            <!-- Display the word to guess here -->
-        </div>
-        <div id="guesses">
-            <!-- Display guessed letters here -->
-        </div>
+        <h1>Guess-Mess</h1>
+        <div id="hangman-image"></div>
+        <div id="word-display"></div>
+        <div id="guesses"></div>
+        <div id="guessed-letters"></div>
         <input type="text" id="guess-input" placeholder="Enter a letter">
         <button id="guess-button">Guess</button>
         <p id="message"></p>
     </div>
 
-    <!-- Celebratory pop-up on winning -->
     <div id="celebration-popup">
         <h2>Congratulations!</h2>
         <p>You guessed the word!</p>
         <audio id="winning-audio" src="winning.mp3" autoplay></audio>
     </div>
+
+    <footer>
+        &copy; 2023 Guess-Mess. All rights reserved.
+    </footer>
 
     <script src="script.js"></script>
 </body>

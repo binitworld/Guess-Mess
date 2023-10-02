@@ -1,23 +1,37 @@
 body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
     font-family: Arial, sans-serif;
-    background-color: #ffffcc; /* Set the outer background color to light yellow */
+    background-color: #ffffcc;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    min-height: 100vh; /* Make the container at least as tall as the viewport */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
     text-align: center;
-    width: 80%; /* Set the width to 80% of the viewport width */
-    height: 90%; /* Set the height to 90% of the viewport height */
-    padding: 20px;
+    width: 50%;
+    height: 20%;
+    padding: 30px;
     background-color: black;
     color: rgb(227, 126, 126);
-    border-radius: 20px;
+    border-radius: 40px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+#heart {
+    font-size: 68px;
+    color: red;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 h1 {
@@ -27,19 +41,13 @@ h1 {
 }
 
 #hangman-image {
-    margin: 20px 0;
-}
-
-#word-display {
-    font-size: 24px;
-    margin: 20px 0;
-    color: white;
+    margin: 90px 0;
 }
 
 #guesses {
-    font-size: 18px;
-    margin: 10px 0;
-    color: white;
+    font-size: 28px;
+    margin: 19px;
+    color: rgb(90, 242, 30);
 }
 
 #guess-input {
@@ -47,18 +55,19 @@ h1 {
     font-size: 18px;
     border: 1px solid white;
     border-radius: 5px;
-    margin-right: 10px;
+    margin: 30px 0;
+    margin-right: 18px;
     color: black;
     background-color: white;
 }
 
 #guess-button {
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 13px 30px;
+    font-size: 27px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 18px;
     cursor: pointer;
 }
 
@@ -67,7 +76,48 @@ h1 {
 }
 
 #message {
-    font-size: 18px;
+    font-size: 24px;
     color: red;
-    margin-top: 10px;
+    margin-top: 16px;
+}
+
+.letter-box {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(255, 200, 8);
+    font-size: 24px;
+    color: white;
+    text-align: center;
+    margin: 9px 5px;
+}
+
+#guessed-letters {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+}
+
+.guessed-letter-box {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+footer {
+    background-color: #f2f2f2;
+    padding: 15px;
+    text-align: match-parent;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    margin-top: auto;
 }

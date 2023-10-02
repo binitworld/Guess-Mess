@@ -22,22 +22,38 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateDisplay() {
-        document.getElementById("word-display").textContent = displayWord();
+        const wordDisplay = document.getElementById("word-display");
+        wordDisplay.innerHTML = "";
+
+        for (let letter of displayWord()) {
+            const letterBox = document.createElement("span");
+            letterBox.className = "letter-box";
+            letterBox.textContent = letter;
+            wordDisplay.appendChild(letterBox);
+        }
+
+        const guessedLettersDisplay = document.getElementById("guessed-letters");
+        guessedLettersDisplay.innerHTML = "";
+
+        for (let letter of guessedLetters) {
+            const guessedLetterBox = document.createElement("div");
+            guessedLetterBox.className = "guessed-letter-box";
+            guessedLetterBox.textContent = letter.toUpperCase();
+            guessedLettersDisplay.appendChild(guessedLetterBox);
+        }
+
         document.getElementById("guesses").textContent = "Guessed letters: " + guessedLetters.join(", ");
         document.getElementById("message").textContent = "";
     }
 
     function checkWin() {
         if (displayWord() === wordToGuess) {
-            // Display the celebratory pop-up
             const celebrationPopup = document.getElementById("celebration-popup");
             celebrationPopup.style.display = "block";
 
-            // Disable input and button
             document.getElementById("guess-input").disabled = true;
             document.getElementById("guess-button").disabled = true;
 
-            // Play background music
             const winningAudio = document.getElementById("winning-audio");
             winningAudio.play();
         } else if (attempts >= maxAttempts) {
@@ -78,17 +94,12 @@ document.addEventListener("DOMContentLoaded", function () {
         guessInput.value = "";
     });
 
-    resetGame(); // Start a new game when the page loads
+    resetGame();
 
     document.getElementById("new-game-button").addEventListener("click", function () {
-        // Hide the celebratory pop-up
         document.getElementById("celebration-popup").style.display = "none";
-
-        // Enable input and button
         document.getElementById("guess-input").disabled = false;
         document.getElementById("guess-button").disabled = false;
-
-        // Reset the game
         resetGame();
     });
 });

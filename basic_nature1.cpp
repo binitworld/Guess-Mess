@@ -74,6 +74,5 @@ int main() {
     if (attempts >= maxAttempts) {
         cout << "You ran out of attempts. The word was: " << wordToGuess << endl;
     }
-
     return 0;
 }
