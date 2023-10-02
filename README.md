@@ -33,3 +33,4 @@ To run this Hangman Game, follow these steps:
 1. Clone the repository to your local machine using the following command:
    ```bash
    git clone https://github.com/binitworld/Hangman-game-Guess-Mess-.git
+## Licence
