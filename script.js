@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let wordToGuess = "";
     const maxAttempts = 6;
     let attempts = 0;
+    let index = 0;
     let guessedLetters = [];
 
     function chooseRandomWord() {
-        return words[Math.floor(Math.random() * words.length)];
+       // index=0;
+        index = Math.floor(Math.random() * words.length);
+        return words[index];
     }
 
     function displayWord() {
@@ -67,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         wordToGuess = chooseRandomWord();
         attempts = 0;
         guessedLetters = [];
-        document.getElementById("hangman-image").innerHTML = "<img src='hangman0.png' alt='Hangman'>";
+        document.getElementById("hangman-image").innerHTML = "<img src= 'img/"+ words[index]+".png' alt='Invalid Image'>";
         document.getElementById("guess-input").disabled = false;
         document.getElementById("guess-button").disabled = false;
         updateDisplay();
@@ -82,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!wordToGuess.includes(guess)) {
                 attempts++;
-                document.getElementById("hangman-image").innerHTML = "<img src='hangman" + attempts + ".png' alt='Hangman'>";
+                document.getElementById("hangman-image").innerHTML = "<img src= 'img/"+ words[index]+".png' alt='Invalid Image'>";
             }
 
             updateDisplay();
