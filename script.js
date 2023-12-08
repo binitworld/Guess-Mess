@@ -1,20 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"];
-    let wordToGuess = "";
     const maxAttempts = 6;
     let attempts = 0;
-    let index = 0;
     let guessedLetters = [];
+    let wordToGuess = "";
 
-    function chooseRandomWord() {
-       // index=0;
-        index = Math.floor(Math.random() * words.length);
-        return words[index];
+    async function chooseRandomWord() {
+        try {
+            const response = await fetch('http://localhost:3000/fetchWord');
+            const data = await response.json();
+            console.log("data", data);
+            if (response.ok) {
+                return data;
+            } else {
+                console.error('Error fetching word:', data.error);
+                return "default"; 
+            }
+        } catch (error) {
+            console.error('Error fetching word:', error);
+            return "default"; 
+        }
     }
 
     function displayWord() {
         let display = "";
-        for (let letter of wordToGuess) {
+        for (let letter of wordToGuess.name.toLowerCase()) {
             if (guessedLetters.includes(letter)) {
                 display += letter;
             } else {
@@ -50,50 +59,51 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function checkWin() {
-        if (displayWord() === wordToGuess) {
+        if (!displayWord().includes("_")) {
             const celebrationPopup = document.getElementById("celebration-popup");
             celebrationPopup.style.display = "block";
-
+    
             document.getElementById("guess-input").disabled = true;
             document.getElementById("guess-button").disabled = true;
-
+    
             const winningAudio = document.getElementById("winning-audio");
             winningAudio.play();
         } else if (attempts >= maxAttempts) {
-            document.getElementById("message").textContent = "You ran out of attempts. The word was: " + wordToGuess;
+            document.getElementById("message").textContent = "You ran out of attempts. The word was: " + wordToGuess.name.toLowerCase();
             document.getElementById("guess-input").disabled = true;
             document.getElementById("guess-button").disabled = true;
         }
     }
 
-    function resetGame() {
-        wordToGuess = chooseRandomWord();
+    async function resetGame() {
+        wordToGuess = await chooseRandomWord();
         attempts = 0;
         guessedLetters = [];
-        document.getElementById("hangman-image").innerHTML = "<img src= 'img/"+ words[index]+".png' alt='Invalid Image'>";
+        document.getElementById("hangman-image").innerHTML = "<img src= '"+ wordToGuess.imagePath +"' alt='Invalid Image'>";
         document.getElementById("guess-input").disabled = false;
         document.getElementById("guess-button").disabled = false;
         updateDisplay();
     }
 
+
     document.getElementById("guess-button").addEventListener("click", function () {
         const guessInput = document.getElementById("guess-input");
         const guess = guessInput.value.toLowerCase();
-
+        console.log("guess",guess);
         if (!guessedLetters.includes(guess)) {
-            guessedLetters.push(guess);
-
-            if (!wordToGuess.includes(guess)) {
-                attempts++;
-                document.getElementById("hangman-image").innerHTML = "<img src= 'img/"+ words[index]+".png' alt='Invalid Image'>";
-            }
-
-            updateDisplay();
-            checkWin();
-        } else {
-            document.getElementById("message").textContent = "You already guessed that letter.";
+        guessedLetters.push(guess);
+    
+        if (!wordToGuess.name.toLowerCase().includes(guess)) {
+            attempts++;
+            document.getElementById("hangman-image").innerHTML = "<img src= '" + wordToGuess.imagePath+ "' alt='Invalid Image'>";
         }
-
+    
+        updateDisplay();
+        checkWin();
+        } else {
+        document.getElementById("message").textContent = "You already guessed that letter.";
+        }
+    
         guessInput.value = "";
     });
 

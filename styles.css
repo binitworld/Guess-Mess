@@ -5,20 +5,31 @@ body {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffcc;
+    background-color: beige;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 120vh;
+    background-image: url('guessmess.gif');
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
 }
-
+/* p{
+margin: 0;
+padding: 0;
+} */
 .container {
     text-align: center;
-    width: 50%;
-    height: 18%;
-    padding: 30px;
+    width: 60%; 
+    max-width: 1100px; 
+    height: 60vh; 
+    padding: 20px; 
+    margin-top: 20vh; 
+    margin-bottom: 20vh; 
     background-color: black;
     color: rgb(227, 126, 126);
     border-radius: 40px;
@@ -26,13 +37,14 @@ body {
     position: relative;
 }
 
-#heart {
+
+/* #heart {
     font-size: 68px;
     color: red;
     position: absolute;
     top: 20px;
     right: 20px;
-}
+} */
 
 h1 {
     font-size: 36px;
@@ -67,7 +79,7 @@ h1 {
 }
 
 #guess-button {
-    padding: 13px 30px;
+    padding: 17px 30px;
     font-size: 27px;
     background-color: #007bff;
     color: white;
@@ -118,11 +130,16 @@ h1 {
     color: #000;
 }
 
-footer {
-    background-color: #f2f2f2;
-    padding: 15px;
-    text-align: match-parent;
-    color: rgb(0, 0, 0);
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    margin-top: auto;
+    background-color: rgba(242, 242, 242, 0.7);
+    padding: 7px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    z-index: 1000;
+    font-size: 20px;
 }
+

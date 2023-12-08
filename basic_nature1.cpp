@@ -1,20 +1,37 @@
 #include <iostream>
-#include <string>
 #include <vector>
 #include <ctime>
 #include <cstdlib>
-#include <algorithm> // Include the <algorithm> header for std::find
+#include <algorithm>
+#include <bsoncxx/builder/stream/document.hpp>
+#include <bsoncxx/json.hpp>
+#include <mongocxx/client.hpp>
+#include <mongocxx/instance.hpp>
+#include <mongocxx/uri.hpp>
 
 using namespace std;
+using bsoncxx::builder::stream::document;
+using bsoncxx::builder::stream::finalize;
 
-// Function to choose a random word from a list
+
+mongocxx::uri mongodb_uri("mongodb+srv://admin:admin@cluster0.xstrq1b.mongodb.net/guessmess?retryWrites=true&w=majority"); 
+mongocxx::client mongodb_client(mongodb_uri);
+mongocxx::database mongodb_db = mongodb_client["gessmess"];
+mongocxx::collection mongodb_collection = mongodb_db["genere"];
+
+
 string chooseRandomWord() {
-    vector<string> words = { "apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon"};
+    auto cursor = mongodb_collection.find({});
+    vector<string> words;
+
+    for (auto&& doc : cursor) {
+        words.push_back(doc["name"].get_utf8().value.to_string());
+    }
+
     int randomIndex = rand() % words.size();
     return words[randomIndex];
 }
 
-// Function to display the current state of the word with underscores for unrevealed letters
 string displayWord(const string& word, const vector<char>& guessedLetters) {
     string display;
     for (char letter : word) {
@@ -28,7 +45,7 @@ string displayWord(const string& word, const vector<char>& guessedLetters) {
 }
 
 int main() {
-    srand(static_cast<unsigned int>(time(nullptr))); // Seed the random number generator
+    srand(static_cast<unsigned int>(time(nullptr))); 
 
     string wordToGuess = chooseRandomWord();
     const int maxAttempts = 6;
@@ -74,5 +91,6 @@ int main() {
     if (attempts >= maxAttempts) {
         cout << "You ran out of attempts. The word was: " << wordToGuess << endl;
     }
+
     return 0;
 }

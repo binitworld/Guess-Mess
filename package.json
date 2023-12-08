@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.0.2"
+  },
+  "name": "hangman-game",
+  "description": "Welcome to the Hangman Game repository! This project showcases a classic word-guessing game implemented in C++. Test your vocabulary and deduction skills by trying to guess the hidden word.",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

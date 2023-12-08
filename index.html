@@ -45,23 +45,51 @@
             top: 10px;
             right: 10px;
             font-size: 24px;
-        
         }
-        script{
-            background-color: rgb(125, 80, 176);
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-            color: rgb(180, 33, 33);
-            font-size: 20px;
+
+        /* Add a new style for the hangman image */
+        #hangman-image img {
+            max-width: 100%; /* Ensure the image doesn't exceed the container */
+        }
+
+        /* Add a new style for guessed letters display */
+        #guessed-letters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        #guessed-letters .guessed-letter-box {
+            background-color: #ddd;
+            padding: 5px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        #guess-input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        #guess-button {
+            margin-top: 5px;
+            padding: 8px;
+            font-size: 18px;
+        }
+
+        #message {
+            margin-top: 10px;
+            font-size: 16px;
+            color: red;
         }
     </style>
 </head>
-<script>
-    alert("This is a game where you have to Learn and Enjoy also refresh the page to get the new challenge; 😉 Thanks!-Team Guess-Mess ");
-</script>
 <body>
     <div class="container">
         <div id="chances">
-            <span id="heart">&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;</span>
+            <!-- <span id="heart">&hearts;&hearts;&hearts;&hearts;&hearts;&hearts;</span> -->
         </div>
         <h1>Guess-Mess</h1>
         <div id="hangman-image"></div>
@@ -79,8 +107,8 @@
         <audio id="winning-audio" src="winning.mp3" autoplay></audio>
     </div>
 
-    <footer>
-        &copy; 2023 Guess-Mess. All rights reserved.
+    <footer class="footer">
+        <p>&copy; 2023 Guess-Mess. All rights reserved.</p>
     </footer>
 
     <script src="script.js"></script>
